@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Michelle Forgacs — Project Management &amp; Digital Marketing</title>
+<meta name="description" content="Michelle Forgacs — Project Management &amp; Digital Marketing. Get in touch by email or on LinkedIn.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Michelle Forgacs — Project Management &amp; Digital Marketing">
+<meta property="og:description" content="Get in touch with Michelle Forgacs by email or on LinkedIn.">
+<!-- absolute URLs: update together when the card moves to its final domain -->
+<link rel="canonical" href="https://www.forgacsmichelle.com/">
+<meta property="og:url" content="https://www.forgacsmichelle.com/">
+<meta property="og:image" content="https://www.forgacsmichelle.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Forgacs Michelle — Project Management &amp; Digital Marketing">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#faf2f0">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+<link rel="preload" href="fonts/playfair-700.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Forgacs Michelle — calling card. Original brand values (see PRODUCT.md). */
+
+@font-face{font-family:"Playfair Display";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/playfair-700.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/plexmono-400.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url(fonts/plexmono-500.woff2) format("woff2")}
+
+:root{
+  /* colours exactly as used on the original website */
+  --bg:   #faf2f0;   /* the site's pink */
+  --ink:  #000;      /* logotype */
+  --text: #0a1a2b;   /* the site's heading ink */
+  --red:  #e02b20;   /* highlight: the dot and the menu-style links */
+
+  --logo: "Playfair Display", Georgia, "Times New Roman", serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  --gutter: clamp(1.5rem, 7vw, 7rem);
+  /* one line ≈ 8.3em wide; capped by height so short screens shrink instead of scrolling */
+  --logo-size: min(calc((100vw - 2 * var(--gutter)) / 8.3), 24vh);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%}
+html{background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility}
+body{font:400 1rem/1.5 var(--mono)}
+::selection{background:var(--ink);color:var(--bg)}
+
+.card{
+  min-height:100vh;
+  min-height:100svh;
+  display:grid;
+  align-content:end;
+  padding:var(--gutter);
+  padding-bottom:max(var(--gutter), 19vh);
+}
+
+/* The logotype: Playfair Display 700 + solid red dot on the baseline, as in the original logo. */
+.logo{
+  margin:0;
+  font:700 var(--logo-size)/.94 var(--logo);
+  letter-spacing:0;
+  color:var(--ink);
+  white-space:nowrap;
+  font-kerning:normal;
+}
+.logo__last::after{
+  content:"";
+  display:inline-block;
+  width:.358em;
+  height:.358em;
+  margin-left:.0025em;
+  border-radius:50%;
+  background:var(--red);
+  vertical-align:-.015em;   /* rests on the baseline with the same overshoot as the "e" */
+}
+
+/* Profession + contacts form one block: the profession sets the width, the contacts span it
+   (email flush with "PROJECT", LinkedIn flush with the end of "MARKETING"). */
+.meta{justify-self:start;width:max-content;max-width:100%}
+
+.role{
+  --track:.14em;
+  margin:clamp(1.1rem, 1.6vw + .4rem, 2.1rem) calc(-1 * var(--track)) 0 0;   /* drop the trailing tracking after the last letter */
+  font-weight:500;
+  font-size:clamp(.74rem, .55vw + .52rem, 1rem);
+  letter-spacing:var(--track);
+  text-transform:uppercase;
+  color:var(--text);
+}
+
+.contact{
+  display:flex;
+  align-items:stretch;
+  margin:.5em 0 0;   /* the two rows sit closer to each other than to the logotype */
+  font-size:clamp(.88rem, .35vw + .78rem, 1.05rem);
+}
+/* Styled like the original site's menu links: red, no underline, opacity .7 on hover. */
+.contact a{
+  color:var(--red);
+  text-decoration:none;
+  transition:opacity .2s cubic-bezier(.16,1,.3,1);
+}
+.contact a:hover{opacity:.7}
+.contact a:focus-visible{outline:2px solid var(--text);outline-offset:4px;border-radius:1px}
+/* Leader rule: the space between the links is a flexible spacer (never narrower than 1.5ch),
+   and a 1px navy line is drawn inside it, 1.5ch clear of each link, only when the spacer has room
+   for a line of at least ~3 characters. The row then reads as one line, as long as the profession. */
+.sep{flex:1 1 0;min-width:1.5ch;position:relative;container-type:inline-size}
+.sep::before{
+  content:"";
+  position:absolute;
+  left:1.5ch;right:1.5ch;
+  top:round(nearest, .867em, 1px);   /* middle of the x-height, snapped to a whole pixel */
+  height:1px;
+  background:rgb(10 26 43 / .35);    /* the profession's navy, quieter than either line of text */
+}
+@container (width < 3.6em){ .sep::before{display:none} }
+
+/* Narrow screens: the logotype reflows to two lines, keeping its poster scale. */
+@media (max-width:720px){
+  :root{--logo-size:min(calc((100vw - 2 * var(--gutter)) / 4.4), 17vh)}
+  .logo span{display:block}
+  .card{padding-bottom:max(var(--gutter), 14vh)}
+}
+/* Small phones: keep the profession on one line (balanced if it ever has to break). */
+@media (max-width:420px){
+  .role{--track:.08em;text-wrap:balance}
+}
+
+/* One authored entrance: name first, the dot last. Final state is the default. */
+@media (prefers-reduced-motion:no-preference){
+  .logo{animation:rise .7s cubic-bezier(.16,1,.3,1) both}
+  .logo__last::after{animation:dot .5s cubic-bezier(.16,1,.3,1) .62s both}
+  .role,.contact{animation:fade .6s cubic-bezier(.16,1,.3,1) .9s both}
+  .contact{animation-delay:1s}
+}
+@keyframes rise{from{opacity:.001;transform:translateY(.06em)}}
+@keyframes dot{from{transform:scale(0)}}
+@keyframes fade{from{opacity:.001}}
+</style>
+</head>
+<body>
+<!--
+THESIS: The brand's own logotype, set at poster scale, is the whole page. A finished calling card: no "coming soon" centre-stack, no CV, no hero-with-buttons.
+OWN-WORLD: Michelle's original pre-AI brand, in the colours the original website uses. The site's pink #faf2f0. A black Playfair Display 700 logotype "Forgacs Michelle" with a solid #e02b20 dot on the baseline. IBM Plex Mono as the voice, in the site's heading ink #0a1a2b. Red #e02b20 as the highlight: the dot, and the contact links styled like the site's red menu links (no underline, opacity on hover).
+STORY: In one glance the visitor reads her name and her profession. In one tap they email her or open her LinkedIn.
+FIRST VIEWPORT: The logotype spans the content width, left-aligned and resting on the lower optical third (two lines, "Forgacs / Michelle.", on narrow screens). Below it, the profession in tracked mono caps, then the email and LinkedIn as the only actions.
+FORM: Structure 1 "the logo is the page", first of three, chosen by the user. Brand and structure are pinned, so there is no concept-seed roll. Seed key: user-pinned.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<main class="card">
+  <h1 class="logo"><span class="logo__first">Forgacs</span> <span class="logo__last">Michelle</span></h1>
+  <div class="meta">
+  <p class="role">Project Management &amp; Digital Marketing</p>
+  <p class="contact">
+    <a href="mailto:contact@forgacsmichelle.com">contact@forgacsmichelle.com</a>
+    <span class="sep" aria-hidden="true"></span>
+    <a href="https://www.linkedin.com/in/forgacsmichelle" target="_blank" rel="noopener">LinkedIn</a>
+  </p>
+  </div>
+</main>
+</body>
+</html>
